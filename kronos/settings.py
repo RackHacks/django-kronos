@@ -6,4 +6,6 @@ from django.conf import settings
 KRONOS_PYTHON = getattr(settings, 'KRONOS_PYTHON', sys.executable)
 KRONOS_MANAGE = getattr(settings, 'KRONOS_MANAGE', '%s/manage.py' % os.getcwd())
 KRONOS_PYTHONPATH = getattr(settings, 'KRONOS_PYTHONPATH', None)
-PROJECT_MODULE = sys.modules['.'.join(settings.SETTINGS_MODULE.split('.')[:-1])]
+# fix if settings in main dir
+#PROJECT_MODULE = sys.modules['.'.join(settings.SETTINGS_MODULE.split('.')[:-1]z)]
+PROJECT_MODULE = sys.modules['.'.join(settings.SETTINGS_MODULE.split('.')[:-1] or ['settings'])]
